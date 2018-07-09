@@ -1,0 +1,12 @@
+version: '2'
+services:
+  service1-server:
+    image: "springio/service1:latest"
+    ports:
+     - "8090:8090"
+  zuul-server:
+    image: "springio/zuul:latest"
+    links:
+     - service1-server:s1
+    ports:
+     - "8070:8070"
