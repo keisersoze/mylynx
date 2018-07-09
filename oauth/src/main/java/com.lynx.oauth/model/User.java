@@ -18,7 +18,7 @@ public class User implements UserDetails{
 
     @Column(unique = true)
     @NotNull
-    private String email;
+    private String username;
 
     @JsonIgnore
     @NotNull
@@ -30,6 +30,11 @@ public class User implements UserDetails{
     private boolean accountNonExpired, accountNonLocked, credentialsNonExpired, enabled;
 
     public User() {
+    }
+
+    public User(@NotNull String username, @NotNull String password) {
+        this.username = username;
+        this.password = password;
         this.accountNonExpired = true;
         this.accountNonLocked = true;
         this.credentialsNonExpired = true;
@@ -52,7 +57,7 @@ public class User implements UserDetails{
 
     @Override
     public String getUsername() {
-        return email;
+        return username;
     }
 
     @Override
@@ -79,8 +84,8 @@ public class User implements UserDetails{
         this.id = id;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public void setPassword(String password) {

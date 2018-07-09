@@ -27,8 +27,10 @@ public class Client implements ClientDetails {
     @NotNull
     private int refreshTokenValiditySeconds;
 
+    @ElementCollection
     private Set<String> resourceIds;
 
+    @ElementCollection
     private Set<String> authorizedGrantTypes;
 
     private boolean isSecretRequired, isScoped, isAutoApprove;
