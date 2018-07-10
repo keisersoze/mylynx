@@ -11,6 +11,7 @@ import org.springframework.security.oauth2.provider.ClientDetailsService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+
 @RestController
 public class ClientController {
 
@@ -30,7 +31,8 @@ public class ClientController {
 
     @GetMapping("/prova3")
     public void prova(){
-        clientRepository.save(new Client("openlaws",passwordEncoder.encode("secret")));
+        Client client = new Client("openlaws",passwordEncoder.encode("secret"));
+        clientRepository.save(client);
     }
 
     @GetMapping("/prova4")

@@ -1,7 +1,7 @@
 package com.lynx.oauth.model;
 
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.provider.ClientDetails;
 
 import javax.persistence.*;
@@ -10,6 +10,7 @@ import java.util.*;
 
 @Entity
 public class Client implements ClientDetails {
+
     @Id
     @GeneratedValue(strategy= GenerationType.SEQUENCE)
     private Long id;
@@ -28,7 +29,7 @@ public class Client implements ClientDetails {
     private int refreshTokenValiditySeconds;
 
     @ElementCollection
-    private List<GrantedAuthority> authorities;
+    private Set<GrantedAuthority> authorities;
 
     @ElementCollection
     private Set<String> resourceIds;
@@ -37,25 +38,33 @@ public class Client implements ClientDetails {
     private Set<String> authorizedGrantTypes;
 
     @ElementCollection
+    private Set<String> redirectUri;
+
+    @ElementCollection
     private Set<String> scope;
 
     private boolean isSecretRequired, isScoped, isAutoApprove;
+
 
     public Client() {
     }
 
     public Client(String clientId, String clientSecret) {
-        this.clientId=clientId;
+        this.clientId= clientId;
+
         this.clientSecret= clientSecret;
-        this.isSecretRequired = true;
-        this.isScoped = false;
-        this.isAutoApprove = false;
-        accessTokenValiditySeconds= 20;
-        refreshTokenValiditySeconds= 20;
-        authorities = AuthorityUtils.createAuthorityList("OPENLAWS_CLIENT");
+
+        redirectUri= new HashSet<>();
+        redirectUri.add("http://anywhere.com");
+
+        authorities = new HashSet<>();
+        authorities.add(new SimpleGrantedAuthority("ROLE_CLIENT"));
+
         authorizedGrantTypes = new HashSet<>(Arrays.asList("client_credentials"));
+
         resourceIds = new HashSet<>(Arrays.asList("oauth2_id"));
-        scope = new HashSet<>(Arrays.asList(("read")));
+
+        scope = new HashSet<>(Arrays.asList("read"));
     }
 
     @Override
@@ -70,7 +79,7 @@ public class Client implements ClientDetails {
 
     @Override
     public boolean isSecretRequired() {
-        return true;
+        return false;
     }
 
     @Override
@@ -100,12 +109,12 @@ public class Client implements ClientDetails {
 
     @Override
     public boolean isAutoApprove(String s) {
-        return true;
+        return false;
     }
 
     @Override
     public Set<String> getRegisteredRedirectUri() {
-        return null;
+        return redirectUri;
     }
 
     @Override

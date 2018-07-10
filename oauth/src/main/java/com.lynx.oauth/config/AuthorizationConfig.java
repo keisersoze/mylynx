@@ -37,7 +37,6 @@ public class AuthorizationConfig extends AuthorizationServerConfigurerAdapter {
     @Autowired
     private ClientDetailsService clientDetailsService;
 
-
     @Bean
     public TokenStore tokenStore() {
         return new JwtTokenStore(accessTokenConverter());
@@ -78,9 +77,9 @@ public class AuthorizationConfig extends AuthorizationServerConfigurerAdapter {
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-        clients.inMemory().clients(clientDetailsService);
+        clients.withClientDetails(clientDetailsService);
 
-                /*inMemory()
+                /*.inMemory()
                 .withClient("openlaws")
                     .secret(passwordEncoder.encode("secret"))
                     .authorities("OPENLAWS_CLIENT")
