@@ -15,11 +15,6 @@ public class UserController {
         @Autowired
         private UserRepository userRepository;
 
-        @GetMapping("/user")
-        public ResponseEntity<?> userInfo(Principal principal){
-            return  ResponseEntity.ok(principal);
-        }
-
         @GetMapping("/prova")
         public void prova(){
             userRepository.save(new User("ciccio","pasticcio"));

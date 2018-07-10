@@ -2,14 +2,17 @@ package com.lynx.oauth.controller;
 
 import com.lynx.oauth.DAO.ClientRepository;
 import com.lynx.oauth.model.Client;
+import com.lynx.oauth.service.MyClientDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.provider.ClientDetails;
-import org.springframework.security.oauth2.provider.ClientDetailsService;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 
 @RestController
@@ -23,7 +26,7 @@ public class ClientController {
 
     @Qualifier("myClientDetailsService")
     @Autowired
-    private ClientDetailsService clientDetailsService;
+    private MyClientDetailsService myClientDetailsService;
 
     @Qualifier("myUserDetailsService")
     @Autowired
@@ -35,11 +38,15 @@ public class ClientController {
         clientRepository.save(client);
     }
 
-    @GetMapping("/prova4")
-    public void prova2(){
-        ClientDetails client = clientDetailsService.loadClientByClientId("openlaws");
-        System.out.println(client.getClientSecret());
+    @GetMapping("/client/{client_id}")
+    public ClientDetails getClient(@PathVariable(value="client_id") String clientId){
+        return myClientDetailsService.loadClientByClientId(clientId);
     }
 
+
+    @GetMapping("/client")
+    public List<ClientDetails> findAllClients(){
+        return myClientDetailsService.findAll();
+    }
 
 }

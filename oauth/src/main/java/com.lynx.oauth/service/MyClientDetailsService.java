@@ -14,10 +14,7 @@ import org.springframework.security.oauth2.provider.client.BaseClientDetails;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @Transactional
 @Service
@@ -28,12 +25,21 @@ public class MyClientDetailsService implements ClientDetailsService {
 
     @Override
     public ClientDetails loadClientByClientId(String clientId) throws ClientRegistrationException {
-        Client client = clientRepository.findByClientId(clientId);
+        ClientDetails client = clientRepository.findByClientId(clientId);
         if (client == null) {
             throw new UsernameNotFoundException(clientId);
         }
         BaseClientDetails details = new BaseClientDetails(client);
         return details;
     }
+
+
+    public List<ClientDetails> findAll() throws ClientRegistrationException{
+        List<ClientDetails> clients = new ArrayList<>();
+        clientRepository.findAll().forEach(client -> clients.add(client));
+        return clients;
+    }
+
+
 
 }
