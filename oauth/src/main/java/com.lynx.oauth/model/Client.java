@@ -10,16 +10,16 @@ import java.util.*;
 
 @Entity
 public class Client implements ClientDetails {
-
     @Id
     @GeneratedValue(strategy= GenerationType.SEQUENCE)
-    private String clientId;
+    private Long id;
 
     @Column(unique = true)
     @NotNull
-    private String clientSecret;
+    private String clientId;
 
-    private String authorities;
+    @NotNull
+    private String clientSecret;
 
     @NotNull
     private int accessTokenValiditySeconds;
@@ -28,19 +28,34 @@ public class Client implements ClientDetails {
     private int refreshTokenValiditySeconds;
 
     @ElementCollection
+    private List<GrantedAuthority> authorities;
+
+    @ElementCollection
     private Set<String> resourceIds;
 
     @ElementCollection
     private Set<String> authorizedGrantTypes;
 
+    @ElementCollection
+    private Set<String> scope;
+
     private boolean isSecretRequired, isScoped, isAutoApprove;
 
     public Client() {
+    }
+
+    public Client(String clientId, String clientSecret) {
+        this.clientId=clientId;
+        this.clientSecret= clientSecret;
         this.isSecretRequired = true;
         this.isScoped = false;
         this.isAutoApprove = false;
+        accessTokenValiditySeconds= 20;
+        refreshTokenValiditySeconds= 20;
+        authorities = AuthorityUtils.createAuthorityList("OPENLAWS_CLIENT");
         authorizedGrantTypes = new HashSet<>(Arrays.asList("client_credentials"));
-        resourceIds = new HashSet<>(Arrays.asList("resource_1"));
+        resourceIds = new HashSet<>(Arrays.asList("oauth2_id"));
+        scope = new HashSet<>(Arrays.asList(("read")));
     }
 
     @Override
@@ -70,7 +85,7 @@ public class Client implements ClientDetails {
 
     @Override
     public Collection<GrantedAuthority> getAuthorities() {
-        return AuthorityUtils.commaSeparatedStringToAuthorityList(authorities);
+        return authorities;
     }
 
     @Override
@@ -85,7 +100,7 @@ public class Client implements ClientDetails {
 
     @Override
     public boolean isAutoApprove(String s) {
-        return false;
+        return true;
     }
 
     @Override
@@ -100,11 +115,11 @@ public class Client implements ClientDetails {
 
     @Override
     public boolean isScoped() {
-        return false;
+        return true;
     }
 
     @Override
     public Set<String> getScope() {
-        return null;
+        return scope;
     }
 }

@@ -1,6 +1,5 @@
 package com.lynx.oauth.config;
 
-import com.lynx.oauth.DAO.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
@@ -21,7 +20,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    @Qualifier("userDetailService")
+    @Qualifier("myUserDetailsService")
     @Autowired
     private UserDetailsService userDetailsService;
 
@@ -55,7 +54,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth    .userDetailsService(userDetailsService);
+        auth    .userDetailsService(userDetailsService)
+                .passwordEncoder(passwordEncoder);
     }
 
 

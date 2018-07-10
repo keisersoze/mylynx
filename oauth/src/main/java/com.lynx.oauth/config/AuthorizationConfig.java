@@ -1,17 +1,20 @@
 package com.lynx.oauth.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
+import org.springframework.security.oauth2.provider.ClientDetailsService;
 import org.springframework.security.oauth2.provider.token.DefaultTokenServices;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
@@ -21,7 +24,7 @@ import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 @EnableAuthorizationServer
 public class AuthorizationConfig extends AuthorizationServerConfigurerAdapter {
     private int accessTokenValiditySeconds = 100;
-    //private int refreshTokenValiditySeconds = 5; refresh token is not enabled at the moment
+    //private int refreshTokenValiditySeconds = 5;
 
     @Value("${security.oauth2.resource.id}")
     private String resourceId;
@@ -29,8 +32,11 @@ public class AuthorizationConfig extends AuthorizationServerConfigurerAdapter {
     @Autowired
     private AuthenticationManager authenticationManager;
 
+
+    @Qualifier("myClientDetailsService")
     @Autowired
-    private PasswordEncoder passwordEncoder;
+    private ClientDetailsService clientDetailsService;
+
 
     @Bean
     public TokenStore tokenStore() {
@@ -72,7 +78,9 @@ public class AuthorizationConfig extends AuthorizationServerConfigurerAdapter {
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-        clients.inMemory()
+        clients.inMemory().clients(clientDetailsService);
+
+                /*inMemory()
                 .withClient("openlaws")
                     .secret(passwordEncoder.encode("secret"))
                     .authorities("OPENLAWS_CLIENT")
@@ -87,7 +95,7 @@ public class AuthorizationConfig extends AuthorizationServerConfigurerAdapter {
                     .authorities("LYNX_CLIENT")
                 .authorizedGrantTypes("client_credentials", "password", "refresh_token")
                 .scopes("read", "write")
-                .resourceIds(resourceId);
+                .resourceIds(resourceId);*/
 
     }
 }
