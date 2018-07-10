@@ -8,9 +8,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.provider.ClientDetails;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.oauth2.provider.client.BaseClientDetails;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -32,10 +31,17 @@ public class ClientController {
     @Autowired
     private UserDetailsService userDetailsService;
 
-    @GetMapping("/prova3")
-    public void prova(){
-        Client client = new Client("openlaws",passwordEncoder.encode("secret"));
-        clientRepository.save(client);
+
+    @PutMapping("/client/{client_id}")
+    public void putClient(@PathVariable(value="client_id") String clientId, @RequestBody BaseClientDetails clientDetails){
+        Client client = new Client(clientDetails);
+        String encPassword = passwordEncoder.encode(client.getClientSecret());
+        client.setClientSecret(encPassword);
+        try {
+            myClientDetailsService.put(client);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @GetMapping("/client/{client_id}")
