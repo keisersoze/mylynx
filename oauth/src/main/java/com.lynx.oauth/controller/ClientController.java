@@ -27,11 +27,7 @@ public class ClientController {
         String encPassword = passwordEncoder.encode(clientDetails.getClientSecret());
         clientDetails.setClientSecret(encPassword);
         clientDetails.setClientId(clientId);
-        try {
-            myClientService.put(clientDetails);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        myClientService.put(clientDetails);
     }
 
     @GetMapping("/client/{client_id}")

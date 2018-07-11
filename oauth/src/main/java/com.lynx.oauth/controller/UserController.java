@@ -24,21 +24,13 @@ public class UserController {
     @Autowired
     private MyUserService userService;
 
-    @PutMapping("/user/prova")
-    public void putClient() throws Exception {
-        userService.put(new User("ciccio", "pasticcio","ciccio,ciccio"));
-    }
 
     @PutMapping("/user/{username}")
     public void putClient(@PathVariable(value="username") String username, @RequestBody User userDetails){
         String encPassword = passwordEncoder.encode(userDetails.getPassword());
         userDetails.setPassword(encPassword);
         userDetails.setUsername(username);
-        try {
-            userService.put(userDetails);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        userService.put(userDetails);
     }
 
     @GetMapping("/user/{username}")
@@ -46,6 +38,10 @@ public class UserController {
         return userService.loadUserByUsername(username);
     }
 
+    @DeleteMapping("/user/{username}")
+    public void deleteClient(@PathVariable(value="username") String username){
+        userService.deleteByUsername(username);
+    }
 
     @GetMapping("/user")
     public List<UserDetails> findAllClients(){

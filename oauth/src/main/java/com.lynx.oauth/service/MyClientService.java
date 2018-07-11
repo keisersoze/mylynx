@@ -40,7 +40,7 @@ public class MyClientService implements ClientDetailsService {
         return clients;
     }
 
-    public void put(ClientDetails clientDetails) throws Exception{
+    public void put(ClientDetails clientDetails){
         Client client = new Client(clientDetails);
         clientRepository.save(client);
     }

@@ -30,14 +30,22 @@ public class MyUserService implements UserDetailsService {
         return user;
     }
 
-    public List<UserDetails> findAll() throws ClientRegistrationException {
+    public List<UserDetails> findAll() {
         List<UserDetails> users = new ArrayList<>();
         userRepository.findAll().forEach(user -> users.add(user));
         return users;
     }
 
-    public void put(UserDetails userDetails) throws Exception{
+    public void put(UserDetails userDetails){
         User user = new User(userDetails);
         userRepository.save(user);
+    }
+
+    public void deleteByUsername(String username) throws  UsernameNotFoundException{
+        if (userRepository.existsByUsername(username)) {
+            userRepository.deleteByUsername(username);
+        }else {
+            throw new UsernameNotFoundException(username);
+        }
     }
 }
