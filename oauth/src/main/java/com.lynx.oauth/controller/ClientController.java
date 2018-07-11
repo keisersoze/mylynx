@@ -33,12 +33,11 @@ public class ClientController {
 
 
     @PutMapping("/client/{client_id}")
-    public void putClient(@PathVariable(value="client_id") String clientId, @RequestBody BaseClientDetails clientDetails){
-        Client client = new Client(clientDetails);
-        String encPassword = passwordEncoder.encode(client.getClientSecret());
-        client.setClientSecret(encPassword);
+    public void putClient(@PathVariable(value="client_id") String clientId, @RequestBody Client clientDetails){
+        String encPassword = passwordEncoder.encode(clientDetails.getClientSecret());
+        clientDetails.setClientSecret(encPassword);
         try {
-            myClientDetailsService.put(client);
+            myClientDetailsService.put(clientDetails);
         } catch (Exception e) {
             e.printStackTrace();
         }
