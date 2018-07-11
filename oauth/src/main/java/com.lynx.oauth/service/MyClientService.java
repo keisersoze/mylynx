@@ -18,7 +18,7 @@ import java.util.*;
 
 @Transactional
 @Service
-public class MyClientDetailsService implements ClientDetailsService {
+public class MyClientService implements ClientDetailsService {
 
     @Autowired
     private ClientRepository clientRepository;
@@ -40,8 +40,9 @@ public class MyClientDetailsService implements ClientDetailsService {
         return clients;
     }
 
-    public void put(Client clientDetails) throws Exception{
-        clientRepository.save(clientDetails);
+    public void put(ClientDetails clientDetails) throws Exception{
+        Client client = new Client(clientDetails);
+        clientRepository.save(client);
     }
 
 

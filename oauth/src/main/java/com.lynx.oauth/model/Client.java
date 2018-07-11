@@ -1,6 +1,7 @@
 package com.lynx.oauth.model;
 
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.oauth2.provider.ClientDetails;
 import org.springframework.security.oauth2.provider.client.BaseClientDetails;
 
 import javax.persistence.ElementCollection;
@@ -12,6 +13,21 @@ import java.util.Set;
 
 @Entity
 public class Client extends BaseClientDetails {
+
+    public Client() {
+    }
+
+    public Client(ClientDetails prototype) {
+        super(prototype);
+    }
+
+    public Client(String clientId, String resourceIds, String scopes, String grantTypes, String authorities) {
+        super(clientId, resourceIds, scopes, grantTypes, authorities);
+    }
+
+    public Client(String clientId, String resourceIds, String scopes, String grantTypes, String authorities, String redirectUris) {
+        super(clientId, resourceIds, scopes, grantTypes, authorities, redirectUris);
+    }
 
     @Id
     @Override

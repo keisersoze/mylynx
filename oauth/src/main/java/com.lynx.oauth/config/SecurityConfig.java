@@ -20,7 +20,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    @Qualifier("myUserDetailsService")
+    @Qualifier("myUserService")
     @Autowired
     private UserDetailsService userDetailsService;
 

@@ -20,7 +20,6 @@ public class User implements UserDetails{
     @NotNull
     private String username;
 
-    @JsonIgnore
     @NotNull
     private String password;
 
