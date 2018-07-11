@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="95ce807e-4113-4f9a-82e0-0c92a0334f69" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/model/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/model/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/model/ClientAuthorities.java" beforeDir="false" afterPath="$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/model/ClientAuthorities.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/service/MyUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/service/MyUserService.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -62,6 +59,18 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="MyUserService.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/service/MyUserService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="123">
+              <caret line="29" column="20" lean-forward="true" selection-start-line="29" selection-start-column="20" selection-end-line="29" selection-end-column="20" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="ClientAuthorities.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/model/ClientAuthorities.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -80,7 +89,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="User.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="User.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/model/User.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="155">
@@ -114,14 +123,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ClientController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/controller/ClientController.java">
+      <file leaf-file-name="UserRepository.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/DAO/UserRepository.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-144">
-              <caret line="14" column="31" lean-forward="true" selection-start-line="14" selection-start-column="31" selection-end-line="14" selection-end-column="31" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="80">
+              <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -214,12 +220,12 @@
         <option value="$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/service/MyClientDetailsService.java" />
         <option value="$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/model/MyClient.java" />
         <option value="$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/controller/ClientController.java" />
-        <option value="$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/service/MyUserService.java" />
         <option value="$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/service/MyClientService.java" />
         <option value="$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/model/ClientAuthorities.java" />
         <option value="$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/controller/UserController.java" />
         <option value="$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/model/Client.java" />
         <option value="$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/model/User.java" />
+        <option value="$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/service/MyUserService.java" />
       </list>
     </option>
   </component>
@@ -541,7 +547,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="187484000" />
+    <option name="totallyTimeSpent" value="187839000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -942,13 +948,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/DAO/UserRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.base/java/util/function/Consumer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -977,16 +976,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="354">
           <caret line="45" column="5" lean-forward="true" selection-start-line="45" selection-start-column="5" selection-end-line="45" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/service/MyUserService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1101,6 +1090,23 @@
             <element signature="e#1300#1301#0" expanded="true" />
             <element signature="e#1607#1608#0" expanded="true" />
             <element signature="e#1630#1631#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/DAO/UserRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/service/MyUserService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="123">
+          <caret line="29" column="20" lean-forward="true" selection-start-line="29" selection-start-column="20" selection-end-line="29" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

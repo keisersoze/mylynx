@@ -36,7 +36,8 @@ public class MyUserService implements UserDetailsService {
         return users;
     }
 
-    public void put(User user) throws Exception{
+    public void put(UserDetails userDetails) throws Exception{
+        User user = new User(userDetails);
         userRepository.save(user);
     }
 }
