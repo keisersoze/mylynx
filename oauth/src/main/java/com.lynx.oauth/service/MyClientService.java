@@ -1,12 +1,10 @@
 package com.lynx.oauth.service;
 
 import com.lynx.oauth.DAO.ClientRepository;
+import com.lynx.oauth.exceptions.ResourceNotFoundException;
 import com.lynx.oauth.model.Client;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.provider.ClientDetails;
 import org.springframework.security.oauth2.provider.ClientDetailsService;
 import org.springframework.security.oauth2.provider.ClientRegistrationException;
@@ -45,8 +43,12 @@ public class MyClientService implements ClientDetailsService {
         clientRepository.save(client);
     }
 
-
-
-
+    public void deleteByClientID(String clientId) throws  UsernameNotFoundException{
+        if (clientRepository.existsByClientId(clientId)) {
+            clientRepository.deleteByClientId(clientId);
+        }else {
+            throw new ResourceNotFoundException("Client",clientId);
+        }
+    }
 
 }

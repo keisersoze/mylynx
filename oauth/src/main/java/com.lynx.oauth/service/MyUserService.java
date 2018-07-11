@@ -1,6 +1,7 @@
 package com.lynx.oauth.service;
 
 import com.lynx.oauth.DAO.UserRepository;
+import com.lynx.oauth.exceptions.ResourceNotFoundException;
 import com.lynx.oauth.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -41,11 +42,11 @@ public class MyUserService implements UserDetailsService {
         userRepository.save(user);
     }
 
-    public void deleteByUsername(String username) throws  UsernameNotFoundException{
+    public void deleteByUsername(String username) throws  ResourceNotFoundException{
         if (userRepository.existsByUsername(username)) {
             userRepository.deleteByUsername(username);
         }else {
-            throw new UsernameNotFoundException(username);
+            throw new ResourceNotFoundException("user",username);
         }
     }
 }

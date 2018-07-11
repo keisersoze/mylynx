@@ -159,5 +159,4 @@ public class User implements UserDetails{
     public void setPassword(String password) {
         this.password = password;
     }
-
 }

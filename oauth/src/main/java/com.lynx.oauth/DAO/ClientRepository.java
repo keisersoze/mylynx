@@ -9,5 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 public interface ClientRepository extends CrudRepository<Client, Long> {
     Client findByClientId(String clientId);
     void deleteByClientId(String clientId);
+    boolean existsByClientId(String clientId);
 
 }

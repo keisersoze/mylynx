@@ -25,7 +25,7 @@ import java.util.Set;
         ignoreUnknown = true
 )
 @Entity
-public class Client extends BaseClientDetails {
+public class Client extends BaseClientDetails{
 
     public Client() {
     }
@@ -94,4 +94,5 @@ public class Client extends BaseClientDetails {
     public Integer getRefreshTokenValiditySeconds() {
         return super.getRefreshTokenValiditySeconds();
     }
+
 }
