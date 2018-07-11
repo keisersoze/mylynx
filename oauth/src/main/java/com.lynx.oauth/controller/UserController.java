@@ -26,7 +26,7 @@ public class UserController {
 
     @PutMapping("/user/prova")
     public void putClient() throws Exception {
-        userService.put(new User("ciccio", "pasticcio"));
+        userService.put(new User("ciccio", "pasticcio","ciccio,ciccio"));
     }
 
     @PutMapping("/user/{username}")

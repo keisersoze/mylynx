@@ -1,5 +1,8 @@
 package com.lynx.oauth.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+import org.codehaus.jackson.map.annotate.JsonSerialize;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.oauth2.provider.ClientDetails;
 import org.springframework.security.oauth2.provider.client.BaseClientDetails;
@@ -11,6 +14,16 @@ import javax.validation.constraints.NotNull;
 import java.util.Collection;
 import java.util.Set;
 
+@JsonSerialize(
+        include = JsonSerialize.Inclusion.NON_DEFAULT
+)
+@JsonIgnoreProperties(
+        ignoreUnknown = true
+)
+@JsonInclude(JsonInclude.Include.NON_DEFAULT)
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(
+        ignoreUnknown = true
+)
 @Entity
 public class Client extends BaseClientDetails {
 
