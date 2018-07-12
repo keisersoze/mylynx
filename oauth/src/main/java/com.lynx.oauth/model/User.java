@@ -31,13 +31,8 @@ public class User implements UserDetails{
     @com.fasterxml.jackson.annotation.JsonProperty("password")
     private String password;
 
-    @ManyToMany(fetch=FetchType.EAGER)
-    @JoinTable(
-            name = "USER_AUTHORITY",
-            joinColumns = @JoinColumn(name = "username"),
-            inverseJoinColumns = @JoinColumn(name = "authority")
-    )
-    private List <Authority> authorities;
+    @ElementCollection(fetch=FetchType.EAGER)
+    private List<GrantedAuthority> authorities;
 
     @JsonProperty("account_non_expired")
     @com.fasterxml.jackson.annotation.JsonProperty("account_non_expired")
@@ -74,9 +69,7 @@ public class User implements UserDetails{
         this.username = username;
         this.password = password;
         if (StringUtils.hasText(authorities)) {
-            AuthorityUtils
-                    .commaSeparatedStringToAuthorityList(authorities)
-                    .forEach(grantedAuthority -> this.authorities.add(new Authority(grantedAuthority)));
+            this.authorities = AuthorityUtils.commaSeparatedStringToAuthorityList(authorities);
         }
         this.accountNonExpired = true;
         this.accountNonLocked = true;
@@ -136,8 +129,7 @@ public class User implements UserDetails{
     @JsonIgnore
     @com.fasterxml.jackson.annotation.JsonIgnore
     public void setAuthorities(Collection<? extends GrantedAuthority> authorities) {
-        authorities
-                .forEach(grantedAuthority -> this.authorities.add(new Authority(grantedAuthority)));
+        this.authorities = new ArrayList(authorities);
     }
 
     @JsonProperty("authorities")
@@ -149,9 +141,7 @@ public class User implements UserDetails{
             using = Jackson2ArrayOrStringDeserializer.class
     )
     private void setAuthoritiesAsStrings(Set<String> values) {
-        AuthorityUtils
-                .createAuthorityList((String[])values.toArray(new String[values.size()]))
-                .forEach(grantedAuthority -> this.authorities.add(new Authority(grantedAuthority)));
+        this.setAuthorities(AuthorityUtils.createAuthorityList((String[])values.toArray(new String[values.size()])));
     }
 
 
