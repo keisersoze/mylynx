@@ -2,13 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="95ce807e-4113-4f9a-82e0-0c92a0334f69" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/DAO/AuthorityRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/controller/AuthorityController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/model/Authority.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/service/MyAuthorityService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/oauth/target/classes/com/lynx/oauth/model/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/oauth/target/classes/com/lynx/oauth/model/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/exceptions/ResourceNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/exceptions/ResourceNotFoundException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/service/MyClientService.java" beforeDir="false" afterPath="$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/service/MyClientService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/service/MyUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/service/MyUserService.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -47,10 +44,23 @@
       <file leaf-file-name="MyClientService.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/service/MyClientService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="355">
-              <caret line="42" column="38" lean-forward="true" selection-start-line="42" selection-start-column="38" selection-end-line="42" selection-end-column="38" />
+            <state relative-caret-position="371">
+              <caret line="40" column="49" lean-forward="true" selection-start-line="40" selection-start-column="49" selection-end-line="40" selection-end-column="49" />
               <folding>
                 <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BaseClientDetails.class" pinned="false" current-in-tab="false">
+        <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/oauth/spring-security-oauth2/2.2.1.RELEASE/spring-security-oauth2-2.2.1.RELEASE.jar!/org/springframework/security/oauth2/provider/client/BaseClientDetails.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-995">
+              <caret line="298" column="19" selection-start-line="298" selection-start-column="19" selection-end-line="298" selection-end-column="19" />
+              <folding>
+                <element signature="e#10756#10757#0" expanded="true" />
+                <element signature="e#10810#10811#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -59,32 +69,11 @@
       <file leaf-file-name="MyUserService.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/service/MyUserService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="768">
-              <caret line="48" column="63" selection-start-line="48" selection-start-column="55" selection-end-line="48" selection-end-column="63" />
+            <state relative-caret-position="400">
+              <caret line="37" column="5" selection-start-line="33" selection-start-column="39" selection-end-line="37" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="User.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/model/User.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="464">
-              <caret line="139" column="48" selection-start-line="139" selection-start-column="48" selection-end-line="139" selection-end-column="48" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/controller/UserController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="218">
-              <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
             </state>
           </provider>
         </entry>
@@ -98,11 +87,53 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="User.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/model/User.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="128">
+              <caret line="122" column="15" lean-forward="true" selection-start-line="122" selection-start-column="15" selection-end-line="122" selection-end-column="15" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ResourceConfig.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/config/ResourceConfig.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="26">
+              <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AuthorizationConfig.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/config/AuthorizationConfig.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="515">
+              <caret line="80" lean-forward="true" selection-start-line="80" selection-end-line="80" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ResourceNotFoundException.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/exceptions/ResourceNotFoundException.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="208">
+              <caret line="14" column="5" lean-forward="true" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="Client.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/model/Client.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="784">
-              <caret line="61" lean-forward="true" selection-start-line="61" selection-end-line="61" />
+            <state relative-caret-position="995">
+              <caret line="86" lean-forward="true" selection-start-line="86" selection-end-line="86" />
               <folding>
                 <element signature="e#994#995#0" expanded="true" />
                 <element signature="e#1026#1027#0" expanded="true" />
@@ -190,7 +221,6 @@
         <option value="$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/model/Resource.java" />
         <option value="$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/model/Client.java" />
         <option value="$PROJECT_DIR$/oauth/pom.xml" />
-        <option value="$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/exceptions/ResourceNotFoundException.java" />
         <option value="$PROJECT_DIR$/service1/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/service1/pom.xml" />
         <option value="$PROJECT_DIR$/service1/src/main/java/com/lynx/service1/config/ResourceServerConfig.java" />
@@ -201,18 +231,19 @@
         <option value="$PROJECT_DIR$/service2/src/main/java/com.lynx.service2/config/SecurityConfig.java" />
         <option value="$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/config/ResourceConfig.java" />
         <option value="$PROJECT_DIR$/oauth/Dockerfile" />
-        <option value="$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/service/MyClientService.java" />
         <option value="$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/config/AuthorizationConfig.java" />
-        <option value="$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/config/SecurityConfig.java" />
         <option value="$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/model/AuthorityUtils.java" />
         <option value="$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/model/MyAuthorityUtils.java" />
         <option value="$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/model/Authority.java" />
         <option value="$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/DAO/AuthorityRepository.java" />
-        <option value="$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/service/MyUserService.java" />
         <option value="$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/service/MyAuthorityService.java" />
         <option value="$PROJECT_DIR$/oauth/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/model/User.java" />
         <option value="$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/controller/AuthorityController.java" />
+        <option value="$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/config/SecurityConfig.java" />
+        <option value="$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/service/MyUserService.java" />
+        <option value="$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/service/MyClientService.java" />
+        <option value="$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/exceptions/ResourceNotFoundException.java" />
       </list>
     </option>
   </component>
@@ -302,36 +333,6 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="com.lynx.oauth" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="mylynx" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mylynx" type="462c0819:PsiDirectoryNode" />
-              <item name="oauth" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com.lynx.oauth" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="mylynx" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mylynx" type="462c0819:PsiDirectoryNode" />
-              <item name="oauth" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com.lynx.oauth" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="mylynx" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mylynx" type="462c0819:PsiDirectoryNode" />
-              <item name="oauth" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com.lynx.oauth" type="462c0819:PsiDirectoryNode" />
-              <item name="DAO" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="mylynx" type="b2602c69:ProjectViewProjectNode" />
@@ -550,7 +551,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="217408000" />
+    <option name="totallyTimeSpent" value="218959000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -563,6 +564,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-1088" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="Event Log" order="16" side_tool="true" />
@@ -696,20 +698,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/5.0.7.RELEASE/spring-web-5.0.7.RELEASE.jar!/org/springframework/web/filter/CharacterEncodingFilter.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="86" selection-start-line="86" selection-end-line="86" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/5.0.7.RELEASE/spring-web-5.0.7.RELEASE.jar!/org/springframework/web/filter/OncePerRequestFilter.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="34" selection-start-line="34" selection-end-line="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-core/8.5.31/tomcat-embed-core-8.5.31.jar!/org/apache/catalina/core/ApplicationFilterChain.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="101">
@@ -871,53 +859,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/config/AuthorizationConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-320">
-          <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/config/ResourceConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-179">
-          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/config/SecurityConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="59">
-          <caret line="42" lean-forward="true" selection-start-line="42" selection-end-line="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/model/ClientAuthorities.java" />
-    <entry file="file://$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/model/Client.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="784">
-          <caret line="61" lean-forward="true" selection-start-line="61" selection-end-line="61" />
-          <folding>
-            <element signature="e#994#995#0" expanded="true" />
-            <element signature="e#1026#1027#0" expanded="true" />
-            <element signature="e#1496#1497#0" expanded="true" />
-            <element signature="e#1538#1539#0" expanded="true" />
-            <element signature="e#1604#1605#0" expanded="true" />
-            <element signature="e#1650#1651#0" expanded="true" />
-            <element signature="e#1724#1725#0" expanded="true" />
-            <element signature="e#1763#1764#0" expanded="true" />
-            <element signature="e#1843#1844#0" expanded="true" />
-            <element signature="e#1888#1889#0" expanded="true" />
-            <element signature="e#1977#1978#0" expanded="true" />
-            <element signature="e#2031#2032#0" expanded="true" />
-            <element signature="e#2121#2122#0" expanded="true" />
-            <element signature="e#2176#2177#0" expanded="true" />
-            <element signature="e#2273#2274#0" expanded="true" />
-            <element signature="e#2318#2319#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/model/MyAuthorityUtils.java" />
     <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.base/jdk/internal/reflect/UnsafeFieldAccessorImpl.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -954,13 +896,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/model/Resource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="64">
-          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/DAO/UserRepository.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="80">
@@ -990,26 +925,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
           <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/service/MyClientService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="355">
-          <caret line="42" column="38" lean-forward="true" selection-start-line="42" selection-start-column="38" selection-end-line="42" selection-end-column="38" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/service/MyUserService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="768">
-          <caret line="48" column="63" selection-start-line="48" selection-start-column="55" selection-end-line="48" selection-end-column="63" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1057,19 +972,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/oauth/spring-security-oauth2/2.2.1.RELEASE/spring-security-oauth2-2.2.1.RELEASE.jar!/org/springframework/security/oauth2/provider/client/BaseClientDetails.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="205">
-          <caret line="298" column="19" selection-start-line="298" selection-start-column="19" selection-end-line="298" selection-end-column="19" />
-          <folding>
-            <element signature="e#10386#10387#0" expanded="true" />
-            <element signature="e#10425#10426#0" expanded="true" />
-            <element signature="e#10756#10757#0" expanded="true" />
-            <element signature="e#10810#10811#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/controller/AuthorityController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="304">
@@ -1080,13 +982,114 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/model/User.java">
+    <entry file="file://$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/config/SecurityConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="464">
-          <caret line="139" column="48" selection-start-line="139" selection-start-column="48" selection-end-line="139" selection-end-column="48" />
+        <state relative-caret-position="192">
+          <caret line="25" column="14" lean-forward="true" selection-start-line="25" selection-start-column="14" selection-end-line="25" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/config/ResourceConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="26">
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/config/AuthorizationConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="515">
+          <caret line="80" lean-forward="true" selection-start-line="80" selection-end-line="80" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/oauth/spring-security-oauth2/2.2.1.RELEASE/spring-security-oauth2-2.2.1.RELEASE.jar!/org/springframework/security/oauth2/provider/client/BaseClientDetails.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-995">
+          <caret line="298" column="19" selection-start-line="298" selection-start-column="19" selection-end-line="298" selection-end-column="19" />
+          <folding>
+            <element signature="e#10756#10757#0" expanded="true" />
+            <element signature="e#10810#10811#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/model/Client.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="995">
+          <caret line="86" lean-forward="true" selection-start-line="86" selection-end-line="86" />
+          <folding>
+            <element signature="e#994#995#0" expanded="true" />
+            <element signature="e#1026#1027#0" expanded="true" />
+            <element signature="e#1496#1497#0" expanded="true" />
+            <element signature="e#1538#1539#0" expanded="true" />
+            <element signature="e#1604#1605#0" expanded="true" />
+            <element signature="e#1650#1651#0" expanded="true" />
+            <element signature="e#1724#1725#0" expanded="true" />
+            <element signature="e#1763#1764#0" expanded="true" />
+            <element signature="e#1843#1844#0" expanded="true" />
+            <element signature="e#1888#1889#0" expanded="true" />
+            <element signature="e#1977#1978#0" expanded="true" />
+            <element signature="e#2031#2032#0" expanded="true" />
+            <element signature="e#2121#2122#0" expanded="true" />
+            <element signature="e#2176#2177#0" expanded="true" />
+            <element signature="e#2273#2274#0" expanded="true" />
+            <element signature="e#2318#2319#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/model/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="122" column="15" lean-forward="true" selection-start-line="122" selection-start-column="15" selection-end-line="122" selection-end-column="15" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/model/Resource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="64">
+          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/service/MyClientService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="371">
+          <caret line="40" column="49" lean-forward="true" selection-start-line="40" selection-start-column="49" selection-end-line="40" selection-end-column="49" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/service/MyUserService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="37" column="5" selection-start-line="33" selection-start-column="39" selection-end-line="37" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/AuthorizationServerApp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oauth/src/main/java/com.lynx.oauth/exceptions/ResourceNotFoundException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="14" column="5" lean-forward="true" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
         </state>
       </provider>
     </entry>

@@ -23,10 +23,10 @@ public class MyUserService implements UserDetailsService {
     private UserRepository  userRepository;
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String username) throws ResourceNotFoundException {
         UserDetails user = userRepository.findByUsername(username);
         if (user == null) {
-            throw new UsernameNotFoundException(username);
+            throw new ResourceNotFoundException("User",username);
         }
         return user;
     }
@@ -46,7 +46,7 @@ public class MyUserService implements UserDetailsService {
         if (userRepository.existsByUsername(username)) {
             userRepository.deleteByUsername(username);
         }else {
-            throw new ResourceNotFoundException("user",username);
+            throw new ResourceNotFoundException("User",username);
         }
     }
 }

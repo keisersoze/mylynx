@@ -25,14 +25,14 @@ public class MyClientService implements ClientDetailsService {
     public ClientDetails loadClientByClientId(String clientId) throws ClientRegistrationException {
         ClientDetails client = clientRepository.findByClientId(clientId);
         if (client == null) {
-            throw new UsernameNotFoundException(clientId);
+            throw new ResourceNotFoundException("Client",clientId);
         }
         BaseClientDetails details = new BaseClientDetails(client);
         return details;
     }
 
 
-    public List<ClientDetails> findAll() throws ClientRegistrationException{
+    public List<ClientDetails> findAll(){
         List<ClientDetails> clients = new ArrayList<>();
         clientRepository.findAll().forEach(client -> clients.add(client));
         return clients;
@@ -43,7 +43,7 @@ public class MyClientService implements ClientDetailsService {
         clientRepository.save(client);
     }
 
-    public void deleteByClientID(String clientId) throws  UsernameNotFoundException{
+    public void deleteByClientID(String clientId) throws  ResourceNotFoundException{
         if (clientRepository.existsByClientId(clientId)) {
             clientRepository.deleteByClientId(clientId);
         }else {
