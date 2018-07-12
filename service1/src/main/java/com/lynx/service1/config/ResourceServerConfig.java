@@ -31,7 +31,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
         RemoteTokenServices tokenService = new RemoteTokenServices();
         tokenService.setCheckTokenEndpointUrl(
                 "http://localhost:8080/oauth/check_token"); //TODO: Support https
-        tokenService.setClientId("lynx");
+        tokenService.setClientId("openlaws");
         tokenService.setClientSecret("secret");
         return tokenService;
     }

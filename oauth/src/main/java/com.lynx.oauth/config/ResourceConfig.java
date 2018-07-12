@@ -37,12 +37,13 @@ public class ResourceConfig extends ResourceServerConfigurerAdapter {
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
-        http
-                .csrf().disable()
-                .anonymous().disable()
-                .authorizeRequests()
-                .antMatchers(HttpMethod.OPTIONS).permitAll()
-                .antMatchers("/hello").hasRole("ADMIN")
-                .antMatchers("/userinfo").hasAuthority("ROLE_TRUSTED_CLIENT");
+        http.csrf().disable();
+        http.authorizeRequests()
+                    .antMatchers(HttpMethod.OPTIONS).permitAll()
+                    .antMatchers("/hello").hasRole("ADMIN");
+
+        // H2Console
+        http.authorizeRequests().antMatchers("/h2/*").permitAll();
+        http.headers().frameOptions().disable();
     }
 }

@@ -76,23 +76,7 @@ public class AuthorizationConfig extends AuthorizationServerConfigurerAdapter {
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients.withClientDetails(clientDetailsService);
-
-                /*.inMemory()
-                .withClient("openlaws")
-                    .secret(passwordEncoder.encode("secret"))
-                    .authorities("OPENLAWS_CLIENT")
-
-                .and()
-                .withClient("cuatrecasas")
-                    .secret(passwordEncoder.encode("secret"))
-                    .authorities("CUATRECASAS_CLIENT")
-                .and()
-                .withClient("lynx")
-                    .secret(passwordEncoder.encode("secret"))
-                    .authorities("LYNX_CLIENT")
-                .authorizedGrantTypes("client_credentials", "password", "refresh_token")
-                .scopes("read", "write")
-                .resourceIds(resourceId);*/
-
     }
+
+
 }

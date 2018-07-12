@@ -13,6 +13,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import javax.transaction.Transactional;
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
@@ -41,14 +43,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
-                .formLogin()
-                    .disable() // disable form authentication
-                .anonymous()
-                    .disable() // disable anonymous user
-                .authorizeRequests()
-                    .anyRequest()
-                    .denyAll(); // denying all access
+        http.authorizeRequests().antMatchers("/h2/*").permitAll();
+        http.csrf().disable();
+        http.headers().frameOptions().disable();
 
     }
 

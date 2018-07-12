@@ -14,13 +14,13 @@ import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
-@Transactional
+
 @Service
+@Transactional
 public class MyUserService implements UserDetailsService {
 
     @Autowired
     private UserRepository  userRepository;
-
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

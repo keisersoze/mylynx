@@ -12,6 +12,7 @@ import org.springframework.util.StringUtils;
 
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
@@ -33,7 +34,7 @@ public class User implements UserDetails{
     @com.fasterxml.jackson.annotation.JsonProperty("password")
     private String password;
 
-    @ElementCollection
+    @ElementCollection(fetch=FetchType.EAGER)
     private List<GrantedAuthority> authorities;
 
     @JsonProperty("account_non_expired")
@@ -61,6 +62,10 @@ public class User implements UserDetails{
         this.setUsername(userDetails.getUsername());
         this.setPassword(userDetails.getPassword());
         this.setAuthorities(userDetails.getAuthorities());
+        this.setAccountNonExpired(userDetails.isAccountNonExpired());
+        this.setAccountNonLocked(userDetails.isAccountNonLocked());
+        this.setCredentialsNonExpired(userDetails.isCredentialsNonExpired());
+        this.setEnabled(userDetails.isEnabled());
     }
 
     public User(String username, String password, String authorities) {
@@ -159,4 +164,21 @@ public class User implements UserDetails{
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public void setAccountNonExpired(boolean accountNonExpired) {
+        this.accountNonExpired = accountNonExpired;
+    }
+
+    public void setAccountNonLocked(boolean accountNonLocked) {
+        this.accountNonLocked = accountNonLocked;
+    }
+
+    public void setCredentialsNonExpired(boolean credentialsNonExpired) {
+        this.credentialsNonExpired = credentialsNonExpired;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
 }

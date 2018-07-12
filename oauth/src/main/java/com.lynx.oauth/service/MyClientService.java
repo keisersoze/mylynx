@@ -14,8 +14,8 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.*;
 
-@Transactional
 @Service
+@Transactional
 public class MyClientService implements ClientDetailsService {
 
     @Autowired
