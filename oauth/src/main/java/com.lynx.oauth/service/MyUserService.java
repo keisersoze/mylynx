@@ -1,15 +1,13 @@
 package com.lynx.oauth.service;
 
 import com.lynx.oauth.DAO.UserRepository;
-import com.lynx.oauth.exceptions.ResourceNotFoundException;
 import com.lynx.oauth.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.oauth2.provider.ClientRegistrationException;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,10 +21,10 @@ public class MyUserService implements UserDetailsService {
     private UserRepository  userRepository;
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws ResourceNotFoundException {
+    public UserDetails loadUserByUsername(String username) throws EntityNotFoundException {
         UserDetails user = userRepository.findByUsername(username);
         if (user == null) {
-            throw new ResourceNotFoundException("User",username);
+            throw new EntityNotFoundException();
         }
         return user;
     }
@@ -42,11 +40,11 @@ public class MyUserService implements UserDetailsService {
         userRepository.save(user);
     }
 
-    public void deleteByUsername(String username) throws  ResourceNotFoundException{
+    public void deleteByUsername(String username) throws  EntityNotFoundException{
         if (userRepository.existsByUsername(username)) {
             userRepository.deleteByUsername(username);
         }else {
-            throw new ResourceNotFoundException("User",username);
+            throw new EntityNotFoundException();
         }
     }
 }

@@ -1,16 +1,14 @@
 package com.lynx.oauth.service;
 
 import com.lynx.oauth.DAO.ClientRepository;
-import com.lynx.oauth.exceptions.ResourceNotFoundException;
 import com.lynx.oauth.model.Client;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.oauth2.provider.ClientDetails;
 import org.springframework.security.oauth2.provider.ClientDetailsService;
-import org.springframework.security.oauth2.provider.ClientRegistrationException;
 import org.springframework.security.oauth2.provider.client.BaseClientDetails;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
 import java.util.*;
 
@@ -22,13 +20,12 @@ public class MyClientService implements ClientDetailsService {
     private ClientRepository clientRepository;
 
     @Override
-    public ClientDetails loadClientByClientId(String clientId) throws ClientRegistrationException {
+    public ClientDetails loadClientByClientId(String clientId) throws EntityNotFoundException {
         ClientDetails client = clientRepository.findByClientId(clientId);
         if (client == null) {
-            throw new ResourceNotFoundException("Client",clientId);
+            throw new EntityNotFoundException();
         }
-        BaseClientDetails details = new BaseClientDetails(client);
-        return details;
+        return client;
     }
 
 
@@ -43,11 +40,11 @@ public class MyClientService implements ClientDetailsService {
         clientRepository.save(client);
     }
 
-    public void deleteByClientID(String clientId) throws  ResourceNotFoundException{
+    public void deleteByClientID(String clientId) throws  EntityNotFoundException{
         if (clientRepository.existsByClientId(clientId)) {
             clientRepository.deleteByClientId(clientId);
         }else {
-            throw new ResourceNotFoundException("Client",clientId);
+            throw new EntityNotFoundException();
         }
     }
 
