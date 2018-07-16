@@ -7,16 +7,19 @@
         <groupId>com.lynx</groupId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
+    <properties>
+        <quartz.version>2.2.1</quartz.version>
+    </properties>
     <modelVersion>4.0.0</modelVersion>
 
     <dependencies>
+        <!-- Quartz framework -->
         <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
+            <groupId>org.quartz-scheduler</groupId>
+            <artifactId>quartz</artifactId>
+            <version>${quartz.version}</version>
         </dependency>
     </dependencies>
-
-    <artifactId>service2</artifactId>
-
+    <artifactId>jobs</artifactId>
 
 </project>

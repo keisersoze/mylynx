@@ -3,10 +3,10 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/impexp/impexp.iml" filepath="$PROJECT_DIR$/impexp/impexp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jobs/jobs.iml" filepath="$PROJECT_DIR$/jobs/jobs.iml" />
       <module fileurl="file://$PROJECT_DIR$/lynxproject.iml" filepath="$PROJECT_DIR$/lynxproject.iml" />
       <module fileurl="file://$PROJECT_DIR$/oauth/oauth.iml" filepath="$PROJECT_DIR$/oauth/oauth.iml" />
       <module fileurl="file://$PROJECT_DIR$/service1/service1.iml" filepath="$PROJECT_DIR$/service1/service1.iml" />
-      <module fileurl="file://$PROJECT_DIR$/service2/service2.iml" filepath="$PROJECT_DIR$/service2/service2.iml" />
       <module fileurl="file://$PROJECT_DIR$/zuul/zuul.iml" filepath="$PROJECT_DIR$/zuul/zuul.iml" />
     </modules>
   </component>

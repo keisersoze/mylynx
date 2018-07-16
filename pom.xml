@@ -11,7 +11,7 @@
         <module>service1</module>
         <module>impexp</module>
         <module>oauth</module>
-        <module>service2</module>
+        <module>jobs</module>
     </modules>
     <packaging>pom</packaging>
 

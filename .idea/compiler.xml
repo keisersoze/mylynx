@@ -7,15 +7,16 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="impexp" />
+        <module name="jobs" />
         <module name="oauth" />
         <module name="service1" />
-        <module name="service2" />
         <module name="zuul" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="impexp" target="1.8" />
       <module name="importexport" target="1.8" />
+      <module name="jobs" target="1.8" />
       <module name="lynxproject" target="1.8" />
       <module name="oauth" target="1.8" />
       <module name="service1" target="1.8" />
