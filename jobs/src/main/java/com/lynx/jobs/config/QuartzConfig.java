@@ -1,93 +1,74 @@
 package com.lynx.jobs.config;
 
+import static org.quartz.JobBuilder.newJob;
+import static org.quartz.SimpleScheduleBuilder.simpleSchedule;
+import static org.quartz.TriggerBuilder.newTrigger;
+
+import java.io.IOException;
+
+import javax.annotation.PostConstruct;
+
+import com.lynx.jobs.model.SampleJob;
+import org.quartz.*;
+import org.quartz.impl.StdSchedulerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
-
-import org.quartz.JobDetailFactoryBean;
-import org.springframework.scheduling.quartz.SchedulerFactoryBean;
-import org.springframework.scheduling.quartz.SimpleTriggerFactoryBean;
-
-import javax.activation.DataSource;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.scheduling.quartz.SpringBeanJobFactory;
 
 @Configuration
 public class QuartzConfig {
-
-
-    private String instanceName;
-
-
-    private String instanceId;
-
-
-    private String threadCount;
-
-
-    private Long startDelay;
-
-
-    private Long repeatInterval;
-
-
-    private String description;
-
-
-    private String key;
+    Logger logger = LoggerFactory.getLogger(getClass());
 
     @Autowired
-    private DataSource dataSource;
+    private ApplicationContext applicationContext;
 
-    @Bean
-    public org.quartz.spi.JobFactory jobFactory(ApplicationContext applicationContext) {
-
-        QuartzJobFactory sampleJobFactory = new QuartzJobFactory();
-        sampleJobFactory.setApplicationContext(applicationContext);
-        return sampleJobFactory;
+    @PostConstruct
+    public void init() {
+        logger.info("Hello world from Quartz...");
     }
 
     @Bean
-    public SchedulerFactoryBean schedulerFactoryBean(ApplicationContext applicationContext) {
+    public SpringBeanJobFactory springBeanJobFactory() {
+        AutoWiringSpringBeanJobFactory jobFactory = new AutoWiringSpringBeanJobFactory();
+        logger.debug("Configuring Job factory");
 
-        SchedulerFactoryBean factory = new SchedulerFactoryBean();
-
-        factory.setOverwriteExistingJobs(true);
-        factory.setJobFactory(jobFactory(applicationContext));
-
-        Properties quartzProperties = new Properties();
-        quartzProperties.setProperty("org.quartz.scheduler.instanceName",instanceName);
-        quartzProperties.setProperty("org.quartz.scheduler.instanceId",instanceId);
-        quartzProperties.setProperty("org.quartz.threadPool.threadCount",threadCount);
-
-        factory.setDataSource(dataSource);
-
-        factory.setQuartzProperties(quartzProperties);
-        factory.setTriggers(emailJobTrigger().getObject());
-
-        return factory;
+        jobFactory.setApplicationContext(applicationContext);
+        return jobFactory;
     }
 
-    @Bean(name = "emailJobTrigger")
-    public SimpleTriggerFactoryBean emailJobTrigger() {
+    @Bean
+    public Scheduler scheduler(Trigger trigger, JobDetail job) throws SchedulerException, IOException {
 
+        StdSchedulerFactory factory = new StdSchedulerFactory();
+        factory.initialize(new ClassPathResource("quartz.properties").getInputStream());
 
-        SimpleTriggerFactoryBean factoryBean = new SimpleTriggerFactoryBean();
-        factoryBean.setJobDetail(emailJobDetails().getObject());
-        factoryBean.setStartDelay(startDelay);
-        factoryBean.setRepeatInterval(repeatInterval);
-        factoryBean.setRepeatCount(SimpleTrigger.REPEAT_INDEFINITELY);
-        factoryBean.setMisfireInstruction(SimpleTrigger.MISFIRE_INSTRUCTION_RESCHEDULE_NEXT_WITH_REMAINING_COUNT);
-        return factoryBean;
+        logger.debug("Getting a handle to the Scheduler");
+        Scheduler scheduler = factory.getScheduler();
+        scheduler.setJobFactory(springBeanJobFactory());
+        scheduler.scheduleJob(job, trigger);
+
+        logger.debug("Starting Scheduler threads");
+        scheduler.start();
+        return scheduler;
     }
 
-    @Bean(name = "emailJobDetails")
-    public JobDetailFactoryBean emailJobDetails() {
+    @Bean
+    public JobDetail jobDetail() {
 
-        JobDetailFactoryBean jobDetailFactoryBean = new JobDetailFactoryBean();
-        jobDetailFactoryBean.setJobClass(EmailJob.class);
-        jobDetailFactoryBean.setDescription(description);
-        jobDetailFactoryBean.setDurability(true);
-        jobDetailFactoryBean.setName(key);
+        return newJob().ofType(SampleJob.class).storeDurably().withIdentity(JobKey.jobKey("Qrtz_Job_Detail")).withDescription("Invoke Sample Job service...").build();
+    }
 
-        return jobDetailFactoryBean;
+    @Bean
+    public Trigger trigger(JobDetail job) {
+
+        int frequencyInSec = 10;
+        logger.info("Configuring trigger to fire every {} seconds", frequencyInSec);
+
+        return newTrigger().forJob(job).withIdentity(TriggerKey.triggerKey("Qrtz_Trigger")).withDescription("Sample trigger").withSchedule(simpleSchedule().withIntervalInSeconds(frequencyInSec).repeatForever()).build();
     }
 }
