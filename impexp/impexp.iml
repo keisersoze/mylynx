@@ -41,11 +41,6 @@
     <orderEntry type="library" name="Maven: org.unbescape:unbescape:1.1.5.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.25" level="project" />
     <orderEntry type="library" name="Maven: org.thymeleaf.extras:thymeleaf-extras-java8time:3.0.1.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.bytedeco.javacpp-presets:tesseract:3.03-rc1-0.11" level="project" />
-    <orderEntry type="library" name="Maven: org.bytedeco.javacpp-presets:leptonica:1.71-0.11" level="project" />
-    <orderEntry type="library" name="Maven: org.bytedeco.javacpp-presets:leptonica:windows-x86_64:1.71-0.11" level="project" />
-    <orderEntry type="library" name="Maven: org.bytedeco:javacpp:0.11" level="project" />
-    <orderEntry type="library" name="Maven: org.bytedeco.javacpp-presets:tesseract:windows-x86_64:3.03-rc1-0.11" level="project" />
     <orderEntry type="library" name="Maven: commons-io:commons-io:2.5" level="project" />
     <orderEntry type="library" name="Maven: net.sourceforge.tess4j:tess4j:4.1.0" level="project" />
     <orderEntry type="library" name="Maven: net.java.dev.jna:jna:4.5.1" level="project" />
