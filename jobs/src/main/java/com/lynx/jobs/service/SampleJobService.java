@@ -10,7 +10,7 @@ public class SampleJobService {
 
     public void executeSampleJob() {
 
-        logger.info("The sample job has begun...");
+        logger.info("Hello World!");
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
