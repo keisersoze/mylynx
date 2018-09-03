@@ -22,7 +22,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
                 .csrf().disable()
                 .anonymous().disable()
                 .authorizeRequests()
-                .antMatchers("/Hello").hasAuthority("OPENLAWS_CLIENT");
+                .antMatchers("/Hello").permitAll();
     }
 
     @Primary
