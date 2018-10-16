@@ -13,4 +13,14 @@ public class HelloController {
         return "Greetings!";
     }
 
+    @RequestMapping("/wait")
+    public String index2() {
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return "terminated";
+    }
+
 }
